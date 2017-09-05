@@ -2,6 +2,10 @@
 # Build configuration for Circle CI
 #
 
+checkout:
+   post:
+        - cp -r licenses/. $ANDROID_HOME/licenses
+
 general:
     artifacts:
         - /home/ubuntu/AptitudeCracker/app/build/outputs/apk/
