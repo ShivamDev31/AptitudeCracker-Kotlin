@@ -2,7 +2,10 @@ package com.droidacid.apticalc.common.base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import butterknife.ButterKnife
+import com.droidacid.apticalc.R
+import timber.log.Timber
 
 /**
  * Created by shivam on 3/9/17.
