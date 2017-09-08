@@ -21,8 +21,8 @@ ext {
             mockito         : '2.8.47',
             junit           : '4.12',
             robolectric     : '3.4',
-            assertj         : '1.1.1'
-
+            assertj         : '1.1.1',
+            leakCanary      : '1.5'
     ]
 
     supportDeps = [
@@ -66,7 +66,7 @@ ext {
             //dagger     : "com.google.dagger:dagger:$versions.dagger",
             //glide      : "com.github.bumptech.glide:glide:$versions.glide",
             //parcler    : "org.parceler:parceler-api:$versions.parcler"
-            leakCanary : "com.squareup.leakcanary:leakcanary-android-no-op:1.5.2"
+//            leakCanary : "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakCanary"
     ]
 
     annotationProcess = [
@@ -106,6 +106,7 @@ ext {
     androidTestsLibs = androidTests.values() + supportLibs
     annotationProcessLibs = annotationProcess.values()
 
-    leakCannary = "com.squareup.leakcanary:leakcanary-android:1.5.2"
+    leakCanaryDebug = "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
+    leakCanaryRelease = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakCanary"
     daggerCompiler = "com.google.dagger:dagger-compiler:$versions.dagger"
 }

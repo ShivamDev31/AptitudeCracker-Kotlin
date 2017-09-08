@@ -13,9 +13,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -28,7 +29,8 @@ dependencies {
     implementation supportLibs
     implementation kotlinLibs
     implementation miscLibs
-    debugImplementation leakCannary
+    releaseImplementation leakCanaryRelease
+    debugImplementation leakCanaryDebug
 
     // APT dependencies
     annotationProcessor annotationProcessLibs
