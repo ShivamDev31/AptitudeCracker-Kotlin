@@ -1,10 +1,17 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
+
     defaultConfig {
         applicationId "com.droidacid.apticalc"
         minSdkVersion 15
@@ -13,10 +20,21 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            keyAlias 'AptitudeCracker'
+            keyPassword 'Apticrac2017'
+            storeFile file('/home/compass/Development/keystores/AptiCracker/AptitudeCracker.jks')
+            storePassword 'Apticrac2017'
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -25,10 +43,14 @@ apply from: 'dependencies.gradle'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true
+    }
     implementation supportLibs
     implementation kotlinLibs
     implementation miscLibs
-    debugImplementation leakCannary
+    releaseImplementation leakCanaryRelease
+    debugImplementation leakCanaryDebug
 
     // APT dependencies
     annotationProcessor annotationProcessLibs

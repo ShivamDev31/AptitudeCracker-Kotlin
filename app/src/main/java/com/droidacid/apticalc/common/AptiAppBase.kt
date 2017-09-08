@@ -1,5 +1,6 @@
 package com.droidacid.apticalc.common
 
+import android.annotation.SuppressLint
 import android.app.Application
 import com.droidacid.apticalc.di.Injection
 
@@ -7,10 +8,11 @@ import com.droidacid.apticalc.di.Injection
  * Created by shivam on 3/9/17.
  */
 
-class AptiApp : Application() {
+@SuppressLint("Registered")
+open class AptiAppBase : Application() {
 
     companion object {
-        var instance: AptiApp? = null
+        var instance: AptiAppBase? = null
             private set
     }
 
